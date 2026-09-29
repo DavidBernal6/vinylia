@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#e7eaf0">
+    <title>VINYLIA · Black Sabbath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <main class="app mx-auto max-w-[1440px] px-5 py-6 sm:px-8 lg:px-12">
+        <header><a class="brand" href="#">VINYLIA<span>.</span><small>A TACTILE MUSIC EXPERIENCE</small></a>
+            <div class="status"><i id="dot"></i><b id="status">READY TO PLAY</b></div>
+        </header>
+        <section class="layout grid gap-6 lg:grid-cols-[1.12fr_.88fr]">
+            <section class="card deck">
+                <div class="kicker"><span>01 / THE TURNTABLE</span><span>33⅓ RPM</span></div>
+                <div class="turntable">
+                    <div class="platter"></div>
+                    <div class="record" id="record">
+                        <div class="grooves"></div>
+                        <div class="grooves g2"></div>
+                        <div class="grooves g3"></div>
+                        <div class="shine"></div>
+                        <div class="label"><img id="cover" src="assets/images/album-cover.jpg" alt="Portada del álbum"
+                                onerror="this.hidden=true"><b id="fallback">BLACK<br>SABBATH</b><small>BLACK SABBATH ·
+                                1970</small><i></i></div>
+                    </div>
+                    <div class="base"></div>
+                    <div id="arm" class="arm"><i></i></div>
+                </div>
+                <div class="now">
+                    <div>
+                        <p id="meta">SIDE A · TRACK 01</p>
+                        <h1 id="title">Black Sabbath</h1>
+                        <div class="artist">Black Sabbath · álbum homónimo</div>
+                    </div><button class="circle" id="fav" aria-label="Guardar favorito" aria-pressed="false">♡</button>
+                </div>
+                <audio id="audio" preload="metadata"></audio><input id="seek" class="range" type="range" min="0"
+                    max="1000" value="0" aria-label="Posición">
+                <div class="times"><span id="elapsed">00:00</span><span id="duration">00:00</span></div>
+                <div class="controls"><button id="shuffle" class="circle" aria-label="Aleatorio"
+                        aria-pressed="false">⤨</button><button id="prev" class="circle"
+                        aria-label="Anterior">|◀</button><button id="play" class="play"
+                        aria-label="Reproducir">▶</button><button id="next" class="circle"
+                        aria-label="Siguiente">▶|</button><button id="repeat" class="circle" aria-label="Repetir"
+                        aria-pressed="false">↻</button></div>
+                <div class="volume"><span>◖</span><input id="volume" class="range" type="range" min="0" max="100"
+                        value="72" aria-label="Volumen"><span id="volvalue">72%</span></div>
+                <p id="notice" class="notice" aria-live="polite">Añade las pistas MP3 en assets/audio.</p>
+            </section>
+            <aside class="card notes">
+                <div class="kicker"><span>02 / LISTENING NOTES</span><span class="accent">♫</span></div>
+                <div class="noteshead"><span class="disc">◉</span>
+                    <div>
+                        <h2>Album notes</h2><small>BLACK SABBATH · 1970</small>
+                    </div>
+                </div>
+                <div class="notebody" tabindex="0">
+                    <h3 id="lyric-title">Black Sabbath</h3>
+                    <div class="rule"></div>
+                    <p>El álbum debut homónimo de Black Sabbath, publicado en 1970. Cambia de lado o selecciona una
+                        pista para recorrer su secuencia original.</p>
+                    <p>Las letras y grabaciones no se incluyen. Puedes añadir archivos de texto propios y aparecerán
+                        aquí al elegir una canción.</p>
+                    <div class="callout" id="lyrics" aria-live="polite">Coloca letras opcionales en
+                        <code>assets/lyrics/</code>.</div>
+                </div>
+                <div class="notesfoot"><span>ALBUM NOTES</span><span>NO. 001</span></div>
+            </aside>
+        </section>
+        <section class="card tracks">
+            <div class="listhead">
+                <div>
+                    <p class="kicker">03 / SELECT A TRACK</p>
+                    <h2>The record collection</h2>
+                </div>
+                <div class="sides"><button id="side-a" class="side active" aria-pressed="true">SIDE A</button><button
+                        id="side-b" class="side" aria-pressed="false">SIDE B</button></div>
+            </div>
+            <div id="list" class="list" role="list"></div>
+            <div class="listfoot"><span>BLACK SABBATH · DEBUT ALBUM</span><span>1970 · 7 TRACKS</span></div>
+        </section>
+        <footer>VINYLIA — A tactile music experience <span>UNOFFICIAL PORTFOLIO CONCEPT · NOT AFFILIATED WITH THE
+                ARTIST</span></footer>
+    </main>
+    <script src="js/main.js" defer></script>
+</body>
+
+</html>

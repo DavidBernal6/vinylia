@@ -1,0 +1,677 @@
+:root {
+    --bg    : #e7eaf0;
+    --ink   : #252a34;
+    --muted : #687080;
+    --quiet : #9299a6;
+    --accent: #9b6b8f;
+    --deep  : #7d5273;
+    --shadow: 9px 9px 20px #c5c9d1, -9px -9px 20px #fff;
+    --sm    : 5px 5px 12px #c5c9d1, -5px -5px 12px #fff;
+    --in    : inset 5px 5px 11px #c5c9d1, inset -5px -5px 11px #fff;
+    --font  : 'Plus Jakarta Sans', sans-serif;
+    --mono  : 'DM Mono', monospace
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin                : 0;
+    background            : var(--bg);
+    color                 : var(--ink);
+    font-family           : var(--font);
+    -webkit-font-smoothing: antialiased
+}
+
+.app {
+    width: 100%
+}
+
+header {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    padding-bottom : 28px
+}
+
+.brand {
+    font-size      : 1.4rem;
+    font-weight    : 800;
+    letter-spacing : .14em;
+    text-decoration: none;
+    color          : var(--ink)
+}
+
+.brand span,
+.accent {
+    color: var(--accent)
+}
+
+.brand small {
+    display       : block;
+    font-size     : .55rem;
+    letter-spacing: .18em;
+    color         : var(--muted)
+}
+
+.status,
+.kicker,
+.times,
+.notesfoot,
+.listfoot,
+footer {
+    font-family: var(--mono)
+}
+
+.status {
+    font-size  : .62rem;
+    color      : var(--muted);
+    display    : flex;
+    align-items: center;
+    gap        : 9px
+}
+
+.status i {
+    width        : 8px;
+    height       : 8px;
+    border-radius: 50%;
+    background   : #aab0bb
+}
+
+.status i.live {
+    background: var(--accent);
+    animation : pulse 1.5s infinite
+}
+
+.card {
+    border-radius: 30px;
+    background   : var(--bg);
+    border       : 1px solid #ffffff80;
+    box-shadow   : var(--shadow)
+}
+
+.deck {
+    padding: 26px clamp(20px, 4vw, 48px) 22px
+}
+
+.kicker {
+    display        : flex;
+    justify-content: space-between;
+    color          : var(--quiet);
+    font-size      : .61rem;
+    letter-spacing : .1em
+}
+
+.turntable {
+    height     : clamp(250px, 34vw, 380px);
+    position   : relative;
+    display    : grid;
+    place-items: center;
+    overflow   : hidden
+}
+
+.platter {
+    position     : absolute;
+    width        : min(76%, 340px);
+    aspect-ratio : 1;
+    border-radius: 50%;
+    background   : linear-gradient(145deg, #e9ecf2, #dfe2e9);
+    box-shadow   : inset 7px 7px 16px #cfd3db, inset -7px -7px 16px white
+}
+
+.record {
+    width        : min(67vw, 318px);
+    height       : auto;
+    max-width    : min(82%, 318px);
+    max-height   : none;
+    aspect-ratio : 1;
+    position     : relative;
+    border-radius: 50%;
+    background   : radial-gradient(circle, #292d35 0 14%, #171a20 15% 16%, #20242b 17% 100%);
+    box-shadow   : 0 12px 28px #9fa4ad;
+    z-index      : 2
+}
+
+.record.spin {
+    animation: spin 3s linear infinite
+}
+
+.grooves {
+    position     : absolute;
+    inset        : 8%;
+    border       : 1px solid #ffffff12;
+    border-radius: 50%
+}
+
+.g2 {
+    inset: 15%
+}
+
+.g3 {
+    inset: 25%
+}
+
+.shine {
+    position     : absolute;
+    inset        : 2%;
+    border-radius: 50%;
+    background   : conic-gradient(from 15deg, transparent 0 34%, #ffffff20 39%, transparent 43% 73%, #ffffff14 77%, transparent 81%)
+}
+
+.label {
+    position     : absolute;
+    inset        : 35%;
+    border-radius: 50%;
+    overflow     : hidden;
+    display      : grid;
+    place-items  : center;
+    background   : radial-gradient(circle, #c7bac3, #9b6b8f);
+    color        : white;
+    box-shadow   : 0 0 0 3px #333740
+}
+
+.label img {
+    position     : absolute;
+    width        : 100%;
+    height       : 100%;
+    object-fit   : cover;
+    border-radius: 50%;
+    z-index      : 1
+}
+
+.label img:not([hidden])~b {
+    display: none
+}
+
+.label b {
+    font-size     : clamp(7px, 1.1vw, 12px);
+    line-height   : 1;
+    letter-spacing: .08em;
+    text-align    : center
+}
+
+.label small {
+    position   : absolute;
+    bottom     : 9%;
+    z-index    : 2;
+    font       : clamp(4px, .48vw, 6px) var(--mono);
+    text-shadow: 0 1px 3px #222
+}
+
+.label i {
+    position     : absolute;
+    z-index      : 3;
+    width        : 5px;
+    height       : 5px;
+    border-radius: 50%;
+    background   : #fff
+}
+
+.base {
+    position     : absolute;
+    z-index      : 4;
+    top          : 13%;
+    right        : 12%;
+    width        : 34px;
+    height       : 34px;
+    border       : 6px solid #cbd0d9;
+    border-radius: 50%;
+    box-shadow   : var(--sm)
+}
+
+.arm {
+    position        : absolute;
+    z-index         : 5;
+    top             : 16%;
+    right           : 17%;
+    width           : clamp(105px, 15vw, 155px);
+    height          : 8px;
+    border-radius   : 9px;
+    background      : linear-gradient(white, #c3c8d0);
+    transform       : rotate(36deg);
+    transform-origin: calc(100% - 5px) 50%;
+    transition      : transform .7s;
+    box-shadow      : 0 2px 5px #9ca2ad
+}
+
+.arm.playing {
+    transform: rotate(57deg) translateX(-18px)
+}
+
+.arm i {
+    position     : absolute;
+    left         : -8px;
+    top          : -4px;
+    width        : 21px;
+    height       : 16px;
+    background   : #afb5c0;
+    border-radius: 4px
+}
+
+.now {
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between
+}
+
+.now p {
+    margin        : 0 0 8px;
+    color         : var(--deep);
+    font          : 500 .61rem var(--mono);
+    letter-spacing: .1em
+}
+
+h1 {
+    margin        : 0;
+    font-size     : clamp(1.5rem, 3vw, 2rem);
+    line-height   : 1.05;
+    letter-spacing: -.05em
+}
+
+.artist {
+    margin-top: 8px;
+    color     : var(--muted);
+    font-size : .84rem
+}
+
+.circle,
+.play {
+    border       : 0;
+    border-radius: 50%;
+    display      : grid;
+    place-items  : center;
+    background   : var(--bg);
+    box-shadow   : var(--sm);
+    cursor       : pointer;
+    transition   : .18s
+}
+
+.circle:hover,
+.play:hover {
+    transform: translateY(-2px)
+}
+
+.circle:active,
+.play:active {
+    box-shadow: var(--in);
+    transform : translateY(1px)
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline       : 3px solid var(--accent);
+    outline-offset: 4px
+}
+
+.circle {
+    width    : 42px;
+    height   : 42px;
+    color    : var(--muted);
+    font-size: 1.1rem
+}
+
+.circle[aria-pressed=true] {
+    color     : var(--deep);
+    box-shadow: var(--in)
+}
+
+.play {
+    width     : 66px;
+    height    : 66px;
+    background: linear-gradient(145deg, #a7789c, #8f5f83);
+    color     : white;
+    font-size : 1.3rem
+}
+
+.range {
+    appearance   : none;
+    width        : 100%;
+    height       : 9px;
+    border-radius: 99px;
+    background   : var(--bg);
+    box-shadow   : var(--in);
+    cursor       : pointer
+}
+
+.range::-webkit-slider-thumb {
+    appearance   : none;
+    width        : 17px;
+    height       : 17px;
+    border-radius: 50%;
+    background   : var(--bg);
+    box-shadow   : var(--sm)
+}
+
+.range::-moz-range-thumb {
+    width        : 17px;
+    height       : 17px;
+    border       : 0;
+    border-radius: 50%;
+    background   : var(--bg);
+    box-shadow   : var(--sm)
+}
+
+#seek {
+    margin-top: 23px
+}
+
+.times {
+    display        : flex;
+    justify-content: space-between;
+    color          : var(--muted);
+    font-size      : .63rem;
+    margin-top     : 8px
+}
+
+.controls {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    gap            : clamp(12px, 2.6vw, 24px);
+    margin         : 19px 0
+}
+
+.volume {
+    display    : flex;
+    align-items: center;
+    gap        : 12px;
+    max-width  : 280px;
+    margin     : auto;
+    color      : var(--muted);
+    font       : .65rem var(--mono)
+}
+
+.volume .range {
+    height: 7px
+}
+
+.notice {
+    text-align: center;
+    font-size : .68rem;
+    color     : var(--quiet);
+    margin    : 13px 0 0
+}
+
+.notes {
+    padding       : 26px clamp(22px, 3.5vw, 42px) 20px;
+    display       : flex;
+    flex-direction: column;
+    min-height    : 600px
+}
+
+.noteshead {
+    display    : flex;
+    align-items: center;
+    gap        : 15px;
+    margin     : 32px 0 24px
+}
+
+.disc {
+    width        : 48px;
+    height       : 48px;
+    border-radius: 50%;
+    display      : grid;
+    place-items  : center;
+    font-size    : 2rem;
+    color        : var(--accent);
+    box-shadow   : var(--sm)
+}
+
+.noteshead h2 {
+    margin   : 0;
+    font-size: 1.15rem
+}
+
+.noteshead small {
+    color: var(--quiet);
+    font : 500 .58rem var(--mono)
+}
+
+.notebody {
+    overflow     : auto;
+    flex         : 1;
+    padding      : 26px 23px;
+    border-radius: 18px;
+    box-shadow   : var(--in);
+    line-height  : 1.9;
+    color        : var(--muted);
+    font-size    : .88rem
+}
+
+.notebody h3 {
+    margin   : 0;
+    color    : var(--ink);
+    font-size: 1.17rem
+}
+
+.rule {
+    height    : 1px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    margin    : 18px 0
+}
+
+.callout {
+    padding      : 15px;
+    margin-top   : 22px;
+    border-radius: 14px;
+    box-shadow   : var(--sm);
+    font-size    : .76rem
+}
+
+.notesfoot,
+.listfoot {
+    display        : flex;
+    justify-content: space-between;
+    padding-top    : 16px;
+    color          : var(--quiet);
+    font-size      : .58rem
+}
+
+.tracks {
+    margin-top: 25px;
+    padding   : 27px clamp(20px, 4vw, 45px) 20px
+}
+
+.listhead {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    gap            : 20px;
+    margin-bottom  : 22px
+}
+
+.listhead h2 {
+    margin   : 8px 0 0;
+    font-size: 1.25rem
+}
+
+.sides {
+    display      : flex;
+    gap          : 5px;
+    padding      : 5px;
+    border-radius: 99px;
+    box-shadow   : var(--in)
+}
+
+.side {
+    border       : 0;
+    border-radius: 99px;
+    background   : transparent;
+    padding      : 10px 17px;
+    color        : var(--muted);
+    font         : 500 .63rem var(--mono);
+    cursor       : pointer
+}
+
+.side.active {
+    box-shadow: var(--sm);
+    color     : var(--deep)
+}
+
+.list {
+    display              : grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap                  : 9px
+}
+
+.track {
+    display              : grid;
+    grid-template-columns: 35px minmax(0, 1fr) 45px;
+    align-items          : center;
+    gap                  : 12px;
+    padding              : 13px 15px;
+    text-align           : left;
+    border               : 0;
+    border-radius        : 14px;
+    background           : var(--bg);
+    box-shadow           : var(--sm);
+    cursor               : pointer
+}
+
+.track:hover {
+    transform: translateY(-2px)
+}
+
+.track.active {
+    box-shadow: var(--in);
+    color     : var(--deep)
+}
+
+.track-num,
+.track-time {
+    font : .66rem var(--mono);
+    color: var(--quiet)
+}
+
+.track-time {
+    text-align: right
+}
+
+.track-name {
+    font-size    : .81rem;
+    font-weight  : 600;
+    white-space  : nowrap;
+    overflow     : hidden;
+    text-overflow: ellipsis
+}
+
+.listfoot {
+    border-top: 1px solid #68708026;
+    margin-top: 20px
+}
+
+footer {
+    display        : flex;
+    justify-content: space-between;
+    gap            : 15px;
+    padding        : 22px 3px;
+    color          : var(--quiet);
+    font-size      : .57rem
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes pulse {
+    50% {
+        box-shadow: 0 0 0 5px #9b6b8f24
+    }
+}
+
+@media(max-width:700px) {
+    .app {
+        padding-top: 20px
+    }
+
+    .card {
+        border-radius: 24px
+    }
+
+    .deck {
+        padding: 21px 18px
+    }
+
+    .turntable {
+        height: 290px
+    }
+
+    .record {
+        width : min(70vw, 250px);
+        height: auto
+    }
+
+    .arm {
+        right: 14%;
+        width: 108px
+    }
+
+    .notes {
+        min-height: 430px;
+        padding   : 22px 18px
+    }
+
+    .noteshead {
+        margin: 24px 0 18px
+    }
+
+    .notebody {
+        padding: 21px 18px
+    }
+
+    .tracks {
+        padding: 22px 18px
+    }
+
+    .listhead {
+        align-items   : flex-start;
+        flex-direction: column
+    }
+
+    .list {
+        grid-template-columns: 1fr
+    }
+
+    footer {
+        flex-direction: column
+    }
+}
+
+@media(min-width:701px) and (max-width:1023px) {
+    .turntable {
+        height: 350px
+    }
+
+    .layout {
+        grid-template-columns: 1fr
+    }
+
+    .deck {
+        max-width: 760px;
+        width    : 100%;
+        margin   : auto
+    }
+
+    .notes {
+        min-height: 470px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior          : auto !important;
+        animation-duration       : .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration      : .01ms !important
+    }
+
+    .record.spin {
+        animation: none
+    }
+}
